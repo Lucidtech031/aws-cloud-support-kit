@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>AWS Cloud Support Dashboard</title>
+        <style>
+            body { font-family: Arial, sans-serif; margin: 20px; }
+            h2 { color: #0073e6; }
+            table { width: 100%; border-collapse: collapse; margin-bottom: 20px; }
+            th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+            th { background-color: #f4f4f4; }
+        </style>
+    </head>
+    <body>
+        <h1>AWS Cloud Support Dashboard</h1>
+
+        <h2>EC2 Instances</h2>
+        <table>
+            <tr><th>ID</th><th>State</th><th>Type</th><th>Launch Time</th></tr>
+            {% for instance in ec2_instances %}
+            <tr>
+                <td>{{ instance.id }}</td>
+                <td>{{ instance.state }}</td>
+                <td>{{ instance.type }}</td>
+                <td>{{ instance.launch_time }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+        
+        <h2>S3 Buckets</h2>
+        <ul>
+            <li>{{ bucket }}</li>
+        </ul>
+
+        <h2>IAM Users</h2>
+        <table>
+            <tr><th>Username</th><th>Created On</th></tr>
+            <tr>
+                <td>{{ user.username }}</td>
+                <td>{{ user.created }}</td>
+            </tr>
+        </table>
+
+        <h2>Recent CloudWatch Logs</h2>
+        <ul>
+            <li>{{ log }}</li>
+        </ul>
+    </body>
+</html>

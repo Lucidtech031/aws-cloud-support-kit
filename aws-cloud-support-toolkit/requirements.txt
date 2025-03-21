@@ -1,0 +1,5 @@
+boto3
+paramiko
+flask
+pandas
+matplotlib
